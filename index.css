@@ -1,0 +1,47 @@
+.topic_value {
+  padding-bottom: 10px;
+}
+
+.info {
+  padding-left: 10px
+}
+
+input.value {
+  width: 120px;
+}
+
+select.value {
+  width: 135px
+}
+
+.geofilter {
+  float: right;
+}
+
+#documentation_note {
+  font-size: smaller;
+}
+
+#geohash_note {
+  padding-left: 10px
+}
+
+.validation_note {
+  padding-left: 10px;
+  visibility: hidden
+}
+
+#map {
+  margin-top: 15px;
+  margin-bottom: 0px;
+  height: 1080px;
+  width: 1920px;
+}
+
+#map_container {
+  max-width: 800px;
+}
+
+body {
+  font-family: Sans-serif
+}

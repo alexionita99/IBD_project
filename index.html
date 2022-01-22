@@ -1,15 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Polyline decode</title>
-    <!-- include Leaflet libraries -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>MQTT map</title>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/polyline@0.2.0/src/polyline.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-realtime/2.1.1/leaflet-realtime.min.js"></script>
+    <script src="https://unpkg.com/mqtt@2.18.8/dist/mqtt.min.js"></script>
   </head>
   <body>
-    <div id="map" style="height:500px; width:700px;"/>
+    <p id="documentation_note">Read the <a href="https://digitransit.fi/en/developers/apis/4-realtime-api/vehicle-positions/">HFP API documentation</a> to understand how these topic filters are used</p>
 
-    <script src="index.js"></script>
+    <table>
+      <tr class="topic_value">
+        <td>Temporal type: </td>
+        <td><select class="value" id="temporal_type">
+              <option>+</option>
+              <option>ongoing</option>
+              <option>upcoming</option>
+            </select>
+        </td>
+      </tr>
+          
+      <tr class="topic_value">
+        <td>Transport mode: </td>
+        <td><select class="value" id="transport_mode">
+            <option>+</option>
+            <option>bus</option>
+            <option>tram</option>
+            <option>train</option>
+          </select>
+        </td>
+      </tr>
+
+      <tr class="topic_value">
+        <td>Operator id: </td>
+        <td><input class="value" id="operator_id" type="text" value="+"></input></td>
+        <td class="validation_note">Operator id should be 4 digits long<td>
+      </tr>
+
+      <tr class="topic_value">
+        <td>Vehicle number: </td>
+        <td><input class="value" id="vehicle_number" type="text" value="+"></input></td>
+        <td class="validation_note">Vehicle number should be 5 digits long<td>
+      </tr>
+
+      <tr class="topic_value">
+        <td>Route id: </td>
+        <td><input class="value" id="route_id" type="text" value="+"></input></td>
+        <td class="validation_note">Route id should contain 4 digits and up to 2 characters<td>
+      </tr>
+
+      <tr class="topic_value">
+        <td>Direction id: </td>
+        <td><select class="value" id="direction_id">
+              <option>+</option>
+              <option>1</option>
+              <option>2</option>
+            </select>
+        </td>
+      </tr>
+
+      <tr class="topic_value">
+        <td>Headsign: </td>
+        <td><input class="value" id="headsign" type="text" value="+"></input></td>
+      </tr>
+
+      <tr class="topic_value">
+        <td>Start time: </td>
+        <td><input class="value" id="start_time" type="text" value="+"></input></td>
+        <td class="validation_note">Time should be in format <code>hh:MM</code><td>
+      </tr>
+
+      <tr class="topic_value">
+        <td>Next stop: </td>
+        <td><input class="value" id="next_stop" type="text" value="+"></input></td>
+        <td class="validation_note">Stop id should be 7 digits long<td>
+      </tr>
+
+      <tr class="topic_value">
+        <td>Geohash level: </td>
+        <td><select class="value" id="geohash_level">
+              <option>+</option>
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select></td>
+      </tr>
+    </table>
+
+    <a id="show_topics" href="javascript:;" onclick="showTopics()">Show topics</a>
+    <pre id="topics" style="display:none"></pre>
+
+    <div id="map_container">
+      <div><button class="geofilter" id="geohash_on">Use map bounds for geohash filter</button><button class="geofilter" id="geohash_off">Remove geohash filter</button></div>
+      <br/>
+      <div id="map"></div>
+    </div>
+    <script src="bundle.js"></script>
   </body>
 </html>
