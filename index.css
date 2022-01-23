@@ -34,8 +34,8 @@ select.value {
 #map {
   margin-top: 15px;
   margin-bottom: 0px;
-  height: 1080px;
-  width: 1920px;
+  height: 800px;
+  width: 1500px;
 }
 
 #map_container {

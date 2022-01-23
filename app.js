@@ -29,6 +29,15 @@ const updateTopic = function() {
 
   document.getElementById("topics").innerHTML = "";
 
+  document.getElementById("geohash_level").style.display = "none";
+  document.getElementById("show_topics").style.display = "none";
+  document.getElementById("geohash_on").style.display = "none";
+  document.getElementById("geohash_off").style.display = "none";
+  document.getElementById("start_time").style.display = "none";
+  document.getElementById("next_stop").style.display = "none";
+  document.getElementById("direction_id").style.display = "none";
+  document.getElementById("temporal_type").style.display = "none";
+
   if (geohashes) {
     geohashes.forEach(function(geohash) {
       var topic = topicBase;

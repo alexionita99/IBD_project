@@ -11,19 +11,8 @@
     <script src="https://unpkg.com/mqtt@2.18.8/dist/mqtt.min.js"></script>
   </head>
   <body>
-    <p id="documentation_note">Read the <a href="https://digitransit.fi/en/developers/apis/4-realtime-api/vehicle-positions/">HFP API documentation</a> to understand how these topic filters are used</p>
-
+    
     <table>
-      <tr class="topic_value">
-        <td>Temporal type: </td>
-        <td><select class="value" id="temporal_type">
-              <option>+</option>
-              <option>ongoing</option>
-              <option>upcoming</option>
-            </select>
-        </td>
-      </tr>
-          
       <tr class="topic_value">
         <td>Transport mode: </td>
         <td><select class="value" id="transport_mode">
@@ -54,7 +43,11 @@
       </tr>
 
       <tr class="topic_value">
-        <td>Direction id: </td>
+        <td>Headsign: </td>
+        <td><input class="value" id="headsign" type="text" value="+"></input></td>
+      </tr>
+
+      <tr class="topic_value">
         <td><select class="value" id="direction_id">
               <option>+</option>
               <option>1</option>
@@ -64,24 +57,25 @@
       </tr>
 
       <tr class="topic_value">
-        <td>Headsign: </td>
-        <td><input class="value" id="headsign" type="text" value="+"></input></td>
+        <td><select class="value" id="temporal_type">
+              <option>+</option>
+              <option>ongoing</option>
+              <option>upcoming</option>
+            </select>
+        </td>
       </tr>
 
       <tr class="topic_value">
-        <td>Start time: </td>
         <td><input class="value" id="start_time" type="text" value="+"></input></td>
         <td class="validation_note">Time should be in format <code>hh:MM</code><td>
       </tr>
 
       <tr class="topic_value">
-        <td>Next stop: </td>
         <td><input class="value" id="next_stop" type="text" value="+"></input></td>
         <td class="validation_note">Stop id should be 7 digits long<td>
       </tr>
 
       <tr class="topic_value">
-        <td>Geohash level: </td>
         <td><select class="value" id="geohash_level">
               <option>+</option>
               <option>0</option>
