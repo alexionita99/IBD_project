@@ -35,8 +35,8 @@ const updateTopic = function() {
   document.getElementById("geohash_off").style.display = "none";
   document.getElementById("start_time").style.display = "none";
   document.getElementById("next_stop").style.display = "none";
-  document.getElementById("direction_id").style.display = "none";
   document.getElementById("temporal_type").style.display = "none";
+  document.getElementById("headsign").style.display = "none";
 
   if (geohashes) {
     geohashes.forEach(function(geohash) {
@@ -110,8 +110,8 @@ const updateTopic = function() {
     realtime.on("update", function(e) {
       var popupContent = function(fId) {
           var feature = e.features[fId];
-          return '<b>' + feature.properties.name + '</b><br/>Speed: ' +
-              feature.properties.speed+'km/h';
+          return '<b>' + 'Route, Direction & Vehicle Number: ' + feature.properties.name + '</b><br/>Speed: ' +
+              feature.properties.speed + 'km/h<br>In station: ' + feature.properties.in_station;
       },
       bindFeaturePopup = function(fId) {
           realtime.getLayer(fId).on("popupopen", function() {
@@ -172,6 +172,7 @@ const updateTopic = function() {
 			properties: {
 				id: VP.oper+"-"+VP.veh,
         name: VP.desi+" - "+topic[10]+" ("+VP.veh+")",
+        in_station: VP.drst,
         speed: Math.round(3.6*VP.spd)
 			}
       
