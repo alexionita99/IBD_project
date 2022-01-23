@@ -73,7 +73,7 @@ const updateTopic = function() {
   } else {
     var topic = topicBase;
 
-    topic += "/";
+    topic += "/+/";
     topic += document.getElementById("temporal_type").value;
     topic += "/";
     topic += document.getElementById("transport_mode").value;
@@ -153,6 +153,16 @@ const updateTopic = function() {
       return;
     }
 
+    if (Math.round(3.6*VP.spd) < 15 &&  VP.drst == 0 && VP.desi != "M1" && VP.desi != "M2" && VP.desi != "A" && VP.desi != "U" && VP.desi != "K" && VP.desi != "P" && VP.desi != "E" && VP.desi != "R" && VP.desi != "19"){
+      var circle = L.circle([VP.lat, VP.long], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.1,
+        radius: 10
+    }).addTo(map);
+    setTimeout(function(){circle.removeFrom(map)}, 1000)
+    }
+
     realtime.update({
 			type: "Feature",
 			geometry: {
@@ -164,6 +174,7 @@ const updateTopic = function() {
         name: VP.desi+" - "+topic[10]+" ("+VP.veh+")",
         speed: Math.round(3.6*VP.spd)
 			}
+      
     });
   });
 };
@@ -181,7 +192,6 @@ document.getElementById("geohash_level").addEventListener("change", function(eve
         document.getElementById("geohash_note").style.visibility = 'hidden';
     }
 });
-
 
 document.getElementById('geohash_on').addEventListener('click', () => {
   var min = map.getBounds().getSouthWest();
