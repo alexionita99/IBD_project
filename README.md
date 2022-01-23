@@ -5,7 +5,7 @@
 Dimoiu Cezar-Gabriel <br>
 Ioniță Alexandru  <br>
 Pribeagu Camelia <br>
-Vlăsceanu Ioana-Miruna <br>
+Vlășceanu Ioana-Miruna <br>
 
 
 This is the project for the Introduction to Big Data Course. 

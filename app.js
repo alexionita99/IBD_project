@@ -153,7 +153,10 @@ const updateTopic = function() {
       return;
     }
 
-    if (Math.round(3.6*VP.spd) < 15 &&  VP.drst == 0 && VP.desi != "M1" && VP.desi != "M2" && VP.desi != "A" && VP.desi != "U" && VP.desi != "K" && VP.desi != "P" && VP.desi != "E" && VP.desi != "R" && VP.desi != "19"){
+    if (Math.round(3.6*VP.spd) < 15 &&  VP.drst == 0 && VP.desi != "M1" && VP.desi != "M2" && 
+      VP.desi != "Y" && VP.desi != "U" && VP.desi != "L" && VP.desi != "E" && VP.desi != "A" && 
+      VP.desi != "P" && VP.desi != "I" && VP.desi != "K" && VP.desi != "R" && VP.desi != "D" && 
+      VP.desi != "T" && VP.desi != "Z" && VP.desi != "G"){
       var circle = L.circle([VP.lat, VP.long], {
         color: 'red',
         fillColor: '#f03',
