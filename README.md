@@ -14,10 +14,11 @@ This is the project for the Introduction to Big Data Course.
 
 1. Clone repo <br>
    <code>git clone https://github.com/cezardimoiu/IBD_project.git</code>
-2. Run the npm server <br>
-   <code>npm start</code>
-3. Access the app from browser <br>
-   <code>http://localhost:9966/</code>
+
+2. Install Live Server extension 
+   <code> https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer </code>
+
+3. On the bottom-right corner click on `Go Live`
 
 
 ## Search Fields

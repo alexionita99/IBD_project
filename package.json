@@ -2,15 +2,9 @@
   "name": "ibd_project",
   "version": "1.0.0",
   "description": "Real-time vehicle following app",
-  "main": "app.js",
-  "scripts": {
-    "start": "beefy app.js:bundle.js --live",
-    "bundle": "browserify app.js -o bundle.js"
-  },
+  "main": "index.js",
+  "scripts": {},
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "beefy": "^2.1.8",
-    "browserify": "^17.0.0"
-  }
+  "devDependencies": {}
 }
