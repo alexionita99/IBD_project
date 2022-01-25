@@ -53,5 +53,5 @@ The operators in the Helsinki region are:
 3. <b>Vehicle Number</b> - show only a certain vehicle on map. The code should be 5 digits long, with 0s (e.g. code 01215 for vehicle 1215)
 4. <b>Route ID</b> - show only vehicles on one route. The code should be 4 digits longs, with a digit between 1-9 and eventually, 0s (e.g. 1001 for route 1, 2113 for route 113)
 5. <b>Direction</b> - either 1 or 2, because each route has 2 directions
-
+6. <b>Address Search</b> - use geocoding API to search for addresses
 
