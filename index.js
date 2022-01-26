@@ -227,7 +227,10 @@ const updateTopic = function () {
   client.on("connect", function () {
     console.log("connected")
     realtime = L.realtime(null, {
-      start: false
+      start: false,
+      pointToLayer: function (feature, latlng) {
+        return L.marker(latlng, { icon: busIcon });
+      }
     }).addTo(map);
     realtime.on("update", function (e) {
       var popupContent = function (fId) {
@@ -462,7 +465,7 @@ document.getElementById("address").addEventListener("change", function (e) {
 
       points = L.geoJSON(geojson, {
         pointToLayer: function (feature, latlng) {
-          return L.marker(latlng, {icon: greenIcon});
+          return L.marker(latlng, { icon: greenIcon });
         },
         onEachFeature: function (feature, layer) {
           if (feature.properties) {
@@ -477,8 +480,8 @@ document.getElementById("address").addEventListener("change", function (e) {
 
 // Custom icons
 var greenIcon = new L.Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconUrl: 'pictures/marker-icon-2x-green.png',
+  shadowUrl: 'pictures/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -486,8 +489,8 @@ var greenIcon = new L.Icon({
 });
 
 var redIcon = new L.Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconUrl: 'pictures/marker-icon-2x-red.png',
+  shadowUrl: 'pictures/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -495,10 +498,20 @@ var redIcon = new L.Icon({
 });
 
 var violetIcon = new L.Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconUrl: 'pictures/marker-icon-2x-violet.png',
+  shadowUrl: 'pictures/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41]
 });
+
+var busIcon = new L.Icon({
+  iconUrl: 'pictures/bus.png',
+  shadowUrl: 'pictures/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
